@@ -1,45 +1,72 @@
-import {useQuery} from 'react-query'
-import axios from 'axios'
+import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import parse from 'html-react-parser'
-import styles from './About.module.scss'
+import Header from '../Header'
+import Footer from '../Footer'
+import './About.css'
 
-const About = () => {
-  const {isLoading, data} = useQuery('faq', () =>
-    axios.get('https://apis.ccbp.in/covid19-faqs'),
-  )
+class About extends Component {
+  state = {isLoading: true, faqsList: []}
 
-  const renderLoader = () => (
-    <div className={styles.loader} data-testid="loader">
+  componentDidMount() {
+    this.getFaqData()
+  }
+
+  getFaqData = async () => {
+    const apiUrl = 'https://apis.ccbp.in/covid19-faqs'
+    const options = {
+      method: 'GET',
+    }
+    const response = await fetch(apiUrl, options)
+    const fetchedData = await response.json()
+    const faqData = fetchedData.faq
+    this.setState({isLoading: false, faqsList: faqData})
+  }
+
+  renderLoader = () => (
+    <div className="loader" data-testid="loader">
       <Loader type="Oval" color="#0b69ff" height="50" width="50" />
     </div>
   )
 
-  return (
-    <>
-      {isLoading ? (
-        renderLoader()
-      ) : (
-        <div className={styles.about}>
-          <h1>About</h1>
-          <p className={`${styles[`about--text`]} ${styles.text}`}>
-            Last updated on march 28 2021
-          </p>
-          <h2>COVID-19 vaccines be ready for distribution</h2>
-          <ul>
-            {data?.data.faq.map(item => (
-              <li key={item.id}>
-                <h3 className={styles[`about--text`]}>
-                  {parse(item.question)}
-                </h3>
-                <p className={styles[`about--ansText`]}>{parse(item.answer)}</p>
-              </li>
-            ))}
-          </ul>
+  renderAbout = () => {
+    const {isLoading, faqsList} = this.state
+    return (
+      <>
+        {isLoading ? (
+          this.renderLoader()
+        ) : (
+          <div className="about">
+            <h1 className="about-text-h1">About</h1>
+            <p className="text about--text">Last updated on march 28 2021</p>
+            <h1 className="about-text-h2">
+              COVID-19 vaccines be ready for distribution
+            </h1>
+            <ul className="about-ul">
+              {faqsList.map(item => (
+                <li key={item.qno}>
+                  <h1 className="about--text">{parse(item.question)}</h1>
+                  <p className="about--ansText">{parse(item.answer)}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </>
+    )
+  }
+
+  render() {
+    return (
+      <>
+        <Header />
+        <div className="about-layout">
+          <div className="about-mainContent">{this.renderAbout()}</div>
+          <Footer className="about-footerContainer" />
         </div>
-      )}
-    </>
-  )
+      </>
+    )
+  }
 }
 
 export default About

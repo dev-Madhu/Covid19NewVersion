@@ -1,0 +1,59 @@
+.about {
+  padding-top: 3.2rem;
+  color: #f8fafc;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 3.2rem;
+}
+.text {
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+}
+.about--text {
+  color: #94a3b8;
+}
+.about-text-h1 {
+  font-weight: 500;
+  font-size: 4.8rem;
+  line-height: 6.4rem;
+}
+.about-text-h2 {
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 3.6rem;
+}
+
+.about--ansText {
+  color: #007bff;
+}
+.about-ul {
+  list-style: none;
+  padding: 0;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 50vh;
+}
+
+
+.about-layout {
+  height: calc(100vh - 8rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.about-mainContent{
+  margin: 0 auto;
+  padding: 0 6.4rem;
+  @media screen and (max-width: 767px){
+    padding: 0 3.2rem;
+  }
+}
+.about-footerContainer {
+  align-items: flex-end;
+}

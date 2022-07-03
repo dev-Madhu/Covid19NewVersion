@@ -1,12 +1,20 @@
 import {Component} from 'react'
 
-// import Header from '../Header'
-// import Footer from '../Footer'
-// import styles from './Home.module.scss'
+import Header from '../Header'
+import Footer from '../Footer'
+import './Home.scss'
 
 class Home extends Component {
   render() {
-    return <h1>Home</h1>
+    return (
+      <>
+        <Header />
+        <div className="layout">
+          <div className="mainContent">Home</div>
+          <Footer className="footerContainer" />
+        </div>
+      </>
+    )
   }
 }
 

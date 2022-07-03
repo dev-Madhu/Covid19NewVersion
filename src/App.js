@@ -1,10 +1,9 @@
-import {Routes, Route} from 'react-router-dom'
-import {QueryClient, QueryClientProvider} from 'react-query'
+import {Route, Switch} from 'react-router-dom'
 import Home from './components/Home/Home'
 import About from './components/About/About'
 import NotFound from './components/NotFound/NotFound'
-import Header from './components/Header'
-import Footer from './components/Footer'
+// import Header from './components/Header'
+// import Footer from './components/Footer'
 import './App.css'
 
 const statesList = [
@@ -154,21 +153,14 @@ const statesList = [
   },
 ]
 
-const queryClient = new QueryClient()
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <Header />
-    <div className="layout">
-      <div className="mainContent">
-        <Switch>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/about" element={<About />} />
-          <Route path="*" element={<NotFound />} />
-        </Switch>
-      </div>
-      <Footer className="footerContainer" />
-    </div>
-  </QueryClientProvider>
+  <>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/about" component={About} />
+      <Route component={NotFound} />
+    </Switch>
+  </>
 )
 
 export default App
