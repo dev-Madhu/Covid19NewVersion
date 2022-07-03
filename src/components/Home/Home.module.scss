@@ -1,0 +1,7 @@
+.home {
+  height: 100vh;
+  &__footerContainer {
+    bottom: 0;
+    position: fixed;
+  }
+}
