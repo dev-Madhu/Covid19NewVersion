@@ -1,33 +1,28 @@
-import styles from './index.module.scss'
+import {VscGithubAlt} from 'react-icons/vsc'
+import {FiInstagram} from 'react-icons/fi'
+import {FaTwitter} from 'react-icons/fa'
+
+import './index.css'
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <h1 className={styles.footer__logo}>
-          COVID19<span className={styles[`footer__logo--country`]}>INDIA</span>
+    <footer className="footer">
+      <div className="footer__container">
+        <h1 className="footer__logo">
+          COVID19<span className="footer__logo--country">INDIA</span>
         </h1>
-        <p className={styles.footer__text}>
+        <p className="footer__text">
           we stand with everyone fighting on the front lines
         </p>
-        <ul className={styles.footer__iconsList}>
+        <ul className="footer__iconsList">
           <li>
-            <img
-              src="https://res.cloudinary.com/ccbp-nxt-wave/image/upload/v1656771327/Vector_yab7fr.png"
-              alt="github"
-            />
+            <VscGithubAlt color="#cbd5e1" size="50" />
           </li>
           <li>
-            <img
-              src="https://res.cloudinary.com/ccbp-nxt-wave/image/upload/v1656771314/instagram_s7dw2q.png"
-              alt="instagram"
-            />
+            <FiInstagram color="#cbd5e1" size="50" />
           </li>
           <li>
-            <img
-              src="https://res.cloudinary.com/ccbp-nxt-wave/image/upload/v1656771100/path3611_pumhs3.png"
-              alt="twitter"
-            />
+            <FaTwitter color="#cbd5e1" size="50" />
           </li>
         </ul>
       </div>

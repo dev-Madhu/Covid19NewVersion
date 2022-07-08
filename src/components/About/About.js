@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
-import parse from 'html-react-parser'
+// import parse from 'html-react-parser'
 import Header from '../Header'
 import Footer from '../Footer'
 import './About.css'
@@ -24,7 +24,7 @@ class About extends Component {
   }
 
   renderLoader = () => (
-    <div className="loader" data-testid="loader">
+    <div className="loader" testid="aboutRouteLoader">
       <Loader type="Oval" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -42,11 +42,11 @@ class About extends Component {
             <h1 className="about-text-h2">
               COVID-19 vaccines be ready for distribution
             </h1>
-            <ul className="about-ul">
+            <ul className="about-ul" testid="faqsUnorderedList">
               {faqsList.map(item => (
                 <li key={item.qno}>
-                  <h1 className="about--text">{parse(item.question)}</h1>
-                  <p className="about--ansText">{parse(item.answer)}</p>
+                  <h1 className="about--text">{item.question}</h1>
+                  <p className="about--ansText">{item.answer}</p>
                 </li>
               ))}
             </ul>
