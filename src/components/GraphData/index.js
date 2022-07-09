@@ -32,9 +32,7 @@ class GraphData extends Component {
 
     const response = await fetch(requestUrl, options)
     const fetchedData = await response.json()
-    console.log(fetchedData[stateCode].dates) // replace AP with other state codes
     const keyNames = Object.keys(fetchedData[stateCode].dates)
-    console.log(keyNames)
     const dateWiseList = []
     keyNames.forEach(date =>
       dateWiseList.push({
@@ -66,20 +64,30 @@ class GraphData extends Component {
   barChart = () => {
     const {allData} = this.state
     const {category} = this.props
-    const barChartType = category.toLowerCase()
+    const barStroke = category.toLowerCase()
 
     const toptendata = allData.slice(Math.max(allData.length - 10, 0))
 
     let colortype = '#9A0E31'
-    if (barChartType === 'confirmed') {
-      colortype = '#9A0E31'
-    } else if (barChartType === 'active') {
-      colortype = '#0A4FA0'
-    } else if (barChartType === 'recovered') {
-      colortype = '#216837'
-    } else if (barChartType === 'deceased') {
-      colortype = '#474C57'
+
+    const renderBarStroke = () => {
+      switch (barStroke) {
+        case 'confirmed':
+          return '#9A0E31'
+
+        case 'active':
+          return '#0A4FA0'
+
+        case 'recovered':
+          return '#216837'
+
+        case 'deceased':
+          return '#474c57'
+        default:
+          return null
+      }
     }
+    colortype = renderBarStroke()
 
     return (
       <div className="chart-wrapper">
@@ -97,7 +105,7 @@ class GraphData extends Component {
           <Tooltip />
           <Legend />
           <Bar
-            dataKey={`${barChartType}`}
+            dataKey={`${barStroke}`}
             fill={`${colortype}`}
             label={{position: 'top', fill: '#fff'}}
             radius={[8, 8, 0, 0]}

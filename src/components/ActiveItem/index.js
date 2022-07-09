@@ -24,7 +24,7 @@ const ActiveItem = props => {
           <img
             src={imageUrl}
             className="stats-icon"
-            alt="country wide confirmed cases pic"
+            alt={`state specific ${converted} cases pic`}
           />
           <p className="stats-number">{count}</p>
         </div>

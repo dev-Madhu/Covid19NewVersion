@@ -175,8 +175,6 @@ class Home extends Component {
     const apiUrl = 'https://apis.ccbp.in/covid19-state-wise-data'
     const response = await fetch(apiUrl)
     const data = await response.json()
-    console.log(data)
-
     let confirmed = 0
     let deceased = 0
     let recovered = 0
@@ -201,7 +199,7 @@ class Home extends Component {
         })
       }
     })
-    console.log(resultList)
+
     active = confirmed - (recovered + deceased)
 
     this.setState({
