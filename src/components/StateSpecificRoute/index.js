@@ -191,6 +191,7 @@ class StateSpecificRoute extends Component {
     stateCode: '',
     category: CategoryDetails[0].categoryName,
     stateSpecificData: [],
+    districtData: [],
   }
 
   componentDidMount() {
@@ -225,7 +226,32 @@ class StateSpecificRoute extends Component {
       stateSpecificData: updatedData,
       stateCode,
       isLoading: false,
+      districtData: stateData.districts,
     })
+  }
+
+  getDistrictByCategory = () => {
+    const {districtData, category} = this.state
+    const keyNames = Object.keys(districtData)
+    let data
+    if (category === 'Active') {
+      data = keyNames.map(each => ({
+        name: each,
+        cases:
+          districtData[each].total.confirmed -
+            (districtData[each].total.deceased +
+              districtData[each].total.recovered) ?? 0,
+      }))
+    } else {
+      data = keyNames.map(each => ({
+        name: each,
+        cases: districtData[each].total[category.toLowerCase()] ?? 0,
+      }))
+    }
+    data.sort((x, y) => y.cases - x.cases)
+
+    console.log(data)
+    return data
   }
 
   onChangeCategoryName = id => {
@@ -266,6 +292,17 @@ class StateSpecificRoute extends Component {
             />
           ))}
         </ul>
+        <div className="dist-container">
+          <h1>Top Districts</h1>
+          <ul testid="topDistrictsUnorderedList" className="distList">
+            {this.getDistrictByCategory().map(dist => (
+              <li key={dist.name}>
+                <p>{dist.cases}</p>
+                <p>{dist.name}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="graphs-data" testid="lineChartsContainer">
           <GraphData stateCode={stateCode} category={category} />
         </div>

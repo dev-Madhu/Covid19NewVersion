@@ -10,6 +10,7 @@ const ActiveItem = props => {
   }
 
   const bgBlock = isActive ? `active-block${id}` : null
+
   return (
     <div className="category-box">
       <li

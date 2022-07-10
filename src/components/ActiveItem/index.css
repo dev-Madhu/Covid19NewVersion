@@ -38,7 +38,15 @@
   background-color: #331427;
 }
 
+.active-block1:hover {
+  background-color: #331427;
+}
+
 .active-block2 {
+  background-color: #132240;
+}
+
+.active-block2:hover {
   background-color: #132240;
 }
 
@@ -46,7 +54,15 @@
   background-color: #182829;
 }
 
+.active-block3:hover {
+  background-color: #182829;
+}
+
 .active-block4 {
+  background-color: #212230;
+}
+
+.active-block4:hover {
   background-color: #212230;
 }
 
@@ -68,17 +84,4 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 24px;
-}
-
-.red {
-  color: #ff073a;
-}
-.blue {
-  color: #007bff;
-}
-.green {
-  color: #28a745;
-}
-.gray {
-  color: #6c757d;
 }
