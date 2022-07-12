@@ -85,7 +85,32 @@
   font-weight: 500;
   line-height: 19px;
 }
+.number{
+   font-size:24px;
+   line-height:28.3px; 
+   font-style:normal;
+   margin-right:10px;
+}
+.district-item{
+    display:flex;
+    align-items:center;
+}
+.top-head{
+font-family:"Roboto";
+font-weight:500;
+font-size:24px;
+line-height:32px;
+}
 
-.distList li p{
-    display: inline-block;
+.red {
+  color: #ff073a;
+}
+.blue {
+  color: #007bff;
+}
+.green {
+  color: #28a745;
+}
+.gray {
+  color: #6c757d;
 }

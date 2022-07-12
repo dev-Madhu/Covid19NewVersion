@@ -136,7 +136,17 @@ class GraphData extends Component {
           />
           <YAxis />
           <Tooltip />
-          <Legend />
+          <Legend
+            iconType="circle"
+            layout="vertical"
+            verticalAlign="top"
+            align="right"
+            wrapperStyle={{
+              fontFamily: 'Roboto',
+              fontWeight: 500,
+              fontSize: 20,
+            }}
+          />
           <Line type="monotone" dataKey={type} stroke={color} />
         </LineChart>
       </div>

@@ -265,10 +265,26 @@ class StateSpecificRoute extends Component {
     </div>
   )
 
+  renderTextColor = () => {
+    const {category} = this.state
+    switch (category) {
+      case 'Confirmed':
+        return 'red'
+      case 'Active':
+        return 'blue'
+      case 'Recovered':
+        return 'green'
+      case 'Deceased':
+        return 'gray'
+      default:
+        return null
+    }
+  }
+
   renderState = () => {
     const {stateSpecificData, stateCode, category} = this.state
     const {state, tested, date} = stateSpecificData
-
+    const textColor = this.renderTextColor()
     return (
       <>
         <div className="state-name-row">
@@ -293,11 +309,11 @@ class StateSpecificRoute extends Component {
           ))}
         </ul>
         <div className="dist-container">
-          <h1>Top Districts</h1>
+          <h1 className={`top-head ${textColor}`}>Top Districts</h1>
           <ul testid="topDistrictsUnorderedList" className="distList">
             {this.getDistrictByCategory().map(dist => (
-              <li key={dist.name}>
-                <p>{dist.cases}</p>
+              <li key={dist.name} className="district-item">
+                <p className="number">{dist.cases}</p>
                 <p>{dist.name}</p>
               </li>
             ))}
